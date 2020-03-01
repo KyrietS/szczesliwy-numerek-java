@@ -1,0 +1,59 @@
+<!--
+  ~ Copyright 2018 The app Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        app:title="@string/general_category"
+        app:key="@string/general_category_key">
+
+        <ListPreference
+            app:defaultValue="student"
+            app:entries="@array/user_type_entries"
+            app:entryValues="@array/user_type_values"
+            app:key="@string/user_type_key"
+            app:title="@string/user_type"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:title="@string/notify_category"
+        app:key="@string/notify_category_key">
+
+        <SwitchPreferenceCompat
+            app:key="@string/notify_key"
+            app:title="@string/notify_student" />
+
+        <eu.legnica.iilo.numerki.ChooseNumbersPreference
+            android:entries="@array/all_numbers"
+            android:entryValues="@array/all_numbers"
+            android:key="@string/notify_numbers_key"
+            android:summary="@string/choose_numbers_summary"
+            android:title="Wybierz numerki"
+            android:dependency="@string/notify_key"/>
+
+        <eu.legnica.iilo.numerki.TimePreference
+            android:key="@string/check_time_key"
+            android:title="@string/check_time_title"
+            android:summary="@string/check_time_summary"
+            android:defaultValue="1205"
+            android:dependency="@string/notify_key" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
